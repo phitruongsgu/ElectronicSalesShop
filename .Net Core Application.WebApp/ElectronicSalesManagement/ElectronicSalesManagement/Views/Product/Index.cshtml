@@ -1,0 +1,853 @@
+﻿
+@model ModelView
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Get Data From URL-->
+@{
+    var filter_0 = Model.filter_0;
+    var filter_1 = Model.filter_1;
+    var filter_2 = Model.filter_2;
+    var filter_3 = Model.filter_3;
+    var filter_4 = Model.filter_4;
+    var filter_5 = Model.filter_5;
+
+    #region array data laptop-pc
+    string[] trademark_Laptop = { "Asus", "HP", "Dell", "Acer", "Lenovo", "MSI", "Huawei", "Microsoft" };
+    string[] ram_Laptop = { "4GB", "8GB", "16GB", "32GB", "64GB" };
+    string[] storage_Laptop = { "256GB", "500GB", "512GB", "1TB", "2TB", "4TB" };
+    string[] graphices_Laptop = { "Intel Iris Xe Graphics", "NVIDIA GeForce GTX 1650", "NVIDIA GeForce GTX 1660Ti", "NVIDIA GeForce GTX 1050" };
+    #endregion
+
+    #region array data screen
+    string[] trademark_Screen = { "Samsung", "LG", "Dell", "Acer", "Lenovo", "MSI", "Philips", "AOC" };
+    string[] backgroundPlate_Screen = { "IPS", "VA", "TN", "PLS", "MVA" };
+    string[] resolution_Screen = { "1920 x 1080", "2560 x 1440", "3840 x 2160", "1366 x 768", "3440 x 1440", "2560 x 1080", "1600 x 900" };
+    string[] size_Screen = { "15 inch", "17 inch", "19 inch", "21 inch", "23 inch", "27 inch", "29 inch", "32 inch" };
+    #endregion
+
+    #region array data hard drive
+    string[] trademark_Harddrive = { "WD", "SEAGATE", "Samsung", "LACIE", "TRANSCEND", "KINGSTON", "KINGMAX", "SANDISK" };
+    string[] capacity_Harddrive = { "120GB", "128GB", "250GB", "256GB", "500GB", "512GB", "1TB", "2TB", "4TB", "6TB" };
+    string[] connection_Harddrive = { "SATA 3", "USB 3.0", "M.2 NVMe", "USB Type C", "USB 3.2", "M.2 SATA", "USB 3.1", "Ethernet" };
+    string[] size_Harddrive = { "2.5 inch", "3.5 inch", "M.2 2280", "M.2", "Card PCI" };
+    #endregion
+
+    #region array data ram
+    string[] size_Ram = { "1 x 4GB", "2 x 4GB", "1 x 8GB", "2 x 8GB", "4 x 8GB", "1 x 16GB", "2 x 16GB", "1 x 32GB" };
+    string[] generation_Ram = { "DDR3", "DDR3L", "DDR4" };
+    string[] bus_Ram = { "2400MHz", "2666MHz", "3000MHz", "3200MHz", "1600MHz", "3600MHz", "2800MHz", "2933MHz" };
+    #endregion
+}
+
+<style>
+    .data_filter {
+        font-size: 15px;
+        margin-right: 15px;
+        padding: 7px 22px 7px 22px;
+        border: 1px solid silver;
+        border-radius: 15px;
+        cursor: pointer;
+        background-color: whitesmoke;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .x_filter {
+        position: relative;
+        bottom: 1px;
+        right: 32px;
+        font-size: 15px;
+        color: orangered;
+    }
+
+    .remove_filter {
+        font-size: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+        color: orangered;
+        text-decoration: underline
+    }
+
+    .value_filter {
+        font-size: 13px;
+        margin-right: 15px;
+        padding: 8px 15px 8px 15px;
+        border: 1px solid rgb(224, 224, 224);
+        border-radius: 4px;
+        cursor: pointer;
+        text-transform: uppercase;
+        color: rgb(51, 51, 51);
+        letter-spacing: 0.5px;
+    }
+
+        .value_filter:hover,
+        .value_filter a:hover {
+            background-color: rgba(245,245,245,0.8);
+            color: rgb(51, 51, 51);
+        }
+</style>
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url('/images/bg/2.jpg') no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Shop Products</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" asp-controller="Home" asp-action="Index">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Shop Products</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bradcaump area -->
+<!-- Start Our Product Area -->
+<section class="htc__product__area shop__page pb--130 pt--50 bg__white">
+    <div class="container">
+        <!--Hiển thị filter-->
+        @{
+            #region show filter
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:22px;font-weight:600;"><strong>FILTER</strong></h3>
+                    </div>
+                </div>
+                @if (filter_0 != null)
+                {
+                    <div class="col-lg-8">
+                        <div class="product__menu">
+                            @if (filter_1 != null)
+                            {
+                                <strong class="data_filter" id="filter_1">@filter_1</strong>
+                                <span class="x_filter">x</span>
+                            }
+                            @if (filter_2 != null)
+                            {
+                                <strong class="data_filter">@filter_2</strong>
+                                <span class="x_filter">x</span>
+                            }
+                            @if (filter_3 != null)
+                            {
+                                <strong class="data_filter">@filter_3</strong>
+                                <span class="x_filter">x</span>
+                            }
+                            @if (filter_4 != null)
+                            {
+                                <strong class="data_filter">@filter_4</strong>
+                                <span class="x_filter">x</span>
+                            }
+                            @if (filter_5 != null)
+                            {
+                                <strong class="data_filter">@filter_5</strong>
+                                <span class="x_filter">x</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <a class="remove_filter" href="/Product/Index/0">Remove Filter</a>
+                    </div>
+                }
+            </div>
+            #endregion
+        }
+
+        <!-- bộ lọc -->
+        <!--Category-->
+        <div class="row mt--40">
+            <div class="col-lg-2">
+                <div class="product__menu">
+                    <h3 style="font-size:16px;"><strong>Category</strong></h3>
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <div class="product__menu">
+                    @{
+                        foreach (var i in Model.Categories)
+                        {
+                            if (i.ID_Category != 2)
+                            {
+                                <strong class="value_filter">
+                                    <a asp-controller="Product"
+                                       asp-action="Index"
+                                       asp-route-filter_0="filter"
+                                       asp-route-filter_1="@i.Name">@i.Name</a>
+                                </strong>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div id="laptop">
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Trademark</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @{
+                            foreach (var i in trademark_Laptop)
+                            {
+                                <strong class="value_filter">
+                                    <a asp-controller="Product"
+                                       asp-action="Index"
+                                       asp-route-filter_0="filter"
+                                       asp-route-filter_1="@filter_1"
+                                       asp-route-filter_2="@i">@i</a>
+                                </strong>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Ram</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in ram_Laptop)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Storage</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in storage_Laptop)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Graphices</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in graphices_Laptop)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@filter_4"
+                                   asp-route-filter_5="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen" hidden>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Trademark</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @{
+                            foreach (var i in trademark_Screen)
+                            {
+                                <strong class="value_filter">
+                                    <a asp-controller="Product"
+                                       asp-action="Index"
+                                       asp-route-filter_0="filter"
+                                       asp-route-filter_1="@filter_1"
+                                       asp-route-filter_2="@i">@i</a>
+                                </strong>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Background Plate</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in backgroundPlate_Screen)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Resolution</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in resolution_Screen)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Size</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in size_Screen)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@filter_4"
+                                   asp-route-filter_5="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="harddrive" hidden>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Trademark</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @{
+                            foreach (var i in trademark_Harddrive)
+                            {
+                                <strong class="value_filter">
+                                    <a asp-controller="Product"
+                                       asp-action="Index"
+                                       asp-route-filter_0="filter"
+                                       asp-route-filter_1="@filter_1"
+                                       asp-route-filter_2="@i">@i</a>
+                                </strong>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Capacity</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in capacity_Harddrive)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Connection</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in connection_Harddrive)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Size</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in size_Harddrive)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@filter_4"
+                                   asp-route-filter_5="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ram" hidden>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Size</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @{
+                            foreach (var i in size_Ram)
+                            {
+                                <strong class="value_filter">
+                                    <a asp-controller="Product"
+                                       asp-action="Index"
+                                       asp-route-filter_0="filter"
+                                       asp-route-filter_1="@filter_1"
+                                       asp-route-filter_2="@i">@i</a>
+                                </strong>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Generation</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in generation_Ram)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row mt--40">
+                <div class="col-lg-2">
+                    <div class="product__menu">
+                        <h3 style="font-size:16px;"><strong>Bus Ram</strong></h3>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="product__menu">
+                        @foreach (var i in bus_Ram)
+                        {
+                            <strong class="value_filter">
+                                <a asp-controller="Product"
+                                   asp-action="Index"
+                                   asp-route-filter_0="filter"
+                                   asp-route-filter_1="@filter_1"
+                                   asp-route-filter_2="@filter_2"
+                                   asp-route-filter_3="@filter_3"
+                                   asp-route-filter_4="@i">@i</a>
+                            </strong>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__menu">
+                    <a class="btn"
+                       style="font-size:20px;font-weight:500;padding:0 20px;"
+                       asp-controller="Product" asp-action="Index" asp-route-idCategory="0">All</a>
+                    @{
+                        foreach (var i in Model.Categories)
+                        {
+                            if (i.ID_Category != 2)
+                            {
+                                <a class="btn"
+                                   style="font-size:17px;font-weight:500;padding:0 20px;"
+                                   href="/Product/Index/@i.ID_Category">@i.Name</a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12 mb--10">
+                        <form
+                              action="/Product/SearchByName">
+                            <input type="text" placeholder="Enter the name of the product you want to search" name="valueSearch"
+                                   style="font-size:14px;font-weight:500;padding:5px 20px;border:1px solid silver;cursor:text;width:450px;" />
+                            <input class="btn btn-danger" type="submit" value="Search"
+                                   style="font-size:15px;font-weight:500;padding:5px 20px;border:1px solid silver;cursor:pointer;" />
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <a class="btn"
+                           style="font-size:17px;font-weight:500;padding:5px 15px;border:1px solid silver"
+                           asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-filter_0="filter"
+                           asp-route-filter_1="0"
+                           asp-route-filter_2="0"
+                           asp-route-filter_3="0"
+                           asp-route-filter_4="0"
+                           asp-route-filter_5="0"
+                           asp-route-sortPrice="up">Prices Up</a>
+
+                        <a class="btn btn-primary"
+                           style="font-size:17px;font-weight:500;padding:5px 15px;border:1px solid silver;margin-right:10px;"
+                           asp-controller="Product"
+                           asp-action="Index"
+                           asp-route-filter_0="filter"
+                           asp-route-filter_1="0"
+                           asp-route-filter_2="0"
+                           asp-route-filter_3="0"
+                           asp-route-filter_4="0"
+                           asp-route-filter_5="0"
+                           asp-route-sortPrice="down">Prices Down</a>
+
+                        <form style="width:300px;float:right;"
+                              action="/Product/FindByPrice">
+                            <input class="btn" type="text" placeholder="Lowest" name="fromPrice"
+                                   style="font-size:14px;font-weight:500;padding:5px 20px;border:1px solid silver;cursor:text;display:inline-block;width:100px;" />
+
+                            <input class="btn" type="text" placeholder="Highest" name="toPrice"
+                                   style="font-size:14px;font-weight:500;padding:5px 20px;border:1px solid silver;cursor:text;display:inline-block;width:100px;" />
+                            <input class="btn btn-success" type="submit" value="Find"
+                                   style="font-size:15px;font-weight:500;padding:5px 20px;border:1px solid silver;cursor:pointer;" />
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <hr />
+
+        @{
+            #region show product paging
+            IEnumerable<Product> products = Model.Products;
+            var amount = products.Count();
+            var current = 0;
+
+            for (var i = 1; i <= Math.Ceiling((double)amount / 4); i++)
+            {
+                int count = 0;
+                int min = i * 4 - 4;
+                int max = i * 4;
+
+                <div class="row mt--10">
+
+                    @foreach (Product item in products)
+                    {
+                        if (count >= min && count < max)
+                        {
+                            current++;
+                            <div class="col-md-3 col-lg-3 col-xs-12" id="page_@current">
+                                <div class="product">
+                                    <div class="product__inner">
+                                        <div class="pro__thumb">
+                                            <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID_Product">
+                                                <img src="~/images/Image_ElectronicSale/products/@item.ImagePath" alt="product images">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product__details">
+                                        <h2 style="text-align:center"><a asp-controller="Product" asp-action="Detail" asp-route-id="@item.ID_Product">@item.Name</a></h2>
+                                        <div style="text-align:center;margin-top:10px;">
+                                            @{
+                                                if (item.ID_Sale == 0)
+                                                {
+                                                    <h4 style="font-size:18px;color:red;"><a href="#">@int.Parse(item.Price).ToString("#,##0").Replace(",", ".")</a></h4>
+                                                }
+                                                else
+                                                {
+                                                    int percent = int.Parse(Model.Sales.Where(p => int.Parse(p.ID_SaleParent) == item.ID_Sale).FirstOrDefault().Percent_sale);
+                                                    <h3 style="display:inline-block;color:#9c9b9b;font-size:14px;margin-right:3px;">
+                                                        <strike>@int.Parse(item.Price).ToString("#,##0").Replace(",", ".")</strike>
+                                                    </h3>
+                                                    <h4 style="display:inline-block;font-size:18px;color:red;">@(((int.Parse(item.Price)-(int.Parse(item.Price)*percent)/100)).ToString("#,##0").Replace(",", "."))</h4>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="product__hover__info">
+                                        <ul class="product__action" style="width:100px;background-color:white;">
+                                            <li><a title="Add TO Cart" style="cursor:pointer" onclick="AddToCart(@item.ID_Product);"><span class="ti-shopping-cart"></span></a></li>
+                                            <li><a title="Wishlist" style="cursor:pointer"><span class="ti-heart"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        count++;
+                    }
+                </div>
+            }
+            #endregion
+        }
+
+        <!-- phân trang -->
+        <div class="row">
+            <div class="col-lg-4 ml-auto mr-auto"></div>
+            <div class="col-lg-4" style="text-align:center">
+                @{
+                    var size = products.Count();
+                    if (size != 0)
+                    {
+                        <p class="page_current mb--10">Current page: 1</p>
+                    }
+                    else
+                    {
+                        <p class="page_current mb--10">Don't have products</p>
+                    }
+                    <div class="ml-auto mr-auto">
+                        @for (var i = 1; i <= Math.Ceiling((double)size / 8); i++)
+                        {
+                            <a style="cursor:pointer;padding:3px;font-size:18px;"
+                               class="page-link"
+                               onclick="pagination(@i,@size)">@i</a>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4 ml-auto mr-auto"></div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="border:1px solid black;width:260px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" style="text-transform:uppercase;">Notifications from our system</h5>
+            </div>
+
+            <div class="modal-body" id="modal_body">
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="loader">
+    <span class="fas fa-spinner xoay icon"></span>
+</div>
+
+@section Product_Index{
+    <script>
+
+        var body = $("html, body");
+        body.animate({ scrollTop: 400 });
+
+        //#region Loader
+        $(window).on('load', function (event) {
+            $('body').removeClass('preloading');
+            // $('.load').delay(1000).fadeOut('fast');
+            $('.loader').delay(1000).fadeOut('fast');
+        });
+        //#endregion
+
+        // #region Phân trang
+        window.setTimeout("load()", 0);
+        var pageSize = 8;
+        function load() {
+            for (var i = pageSize + 1; i <= 1000; i++) {
+                $("#page_" + i).hide();
+            }
+            body.animate({ scrollTop: 725 });
+        }
+        function pagination(pageNumber, size) {
+            $(".page_current").html("Current page: " + pageNumber);
+            if (pageNumber == 1) {
+                for (var i = 1; i <= pageSize; i++) {
+                    $("#page_" + i).show();
+                }
+                for (var i = pageSize + 1; i <= Math.ceil(size); i++) {
+                    $("#page_" + i).hide();
+                }
+                body.animate({ scrollTop: 725 });
+            } else {
+                var fromPage = (pageNumber * pageSize) - (pageSize - 1);
+                var toPage = pageNumber * pageSize;
+                for (var i = 1; i < (pageNumber * pageSize) - (pageSize - 1); i++) {
+                    $("#page_" + i).hide();
+                }
+                for (var i = (pageNumber * pageSize) - (pageSize - 1); i <= toPage; i++) {
+                    $("#page_" + i).show();
+                }
+                for (var i = (pageNumber * pageSize) + 1; i <= size; i++) {
+                    $("#page_" + i).hide();
+                }
+                body.animate({ scrollTop: 725 });
+            }
+        }
+        // #endregion
+
+        //#region Add to cart
+
+        function AddToCart(id) {
+            $.ajax({
+                url: "/Product/AddToCart_OnlyOne",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "IDProduct": id
+                }),
+                cache: false,
+                success: function (message) {
+                    $("#modal_body").html(message);
+                    $('#dialog1').modal('show');
+                    location.reload();
+                },
+                error: function () {
+                    $("#modal_body").html('<i class="fas fa-exclamation-triangle"></i>&ensp;Add to cart failt.!!!');
+                    $('#dialog1').modal('show');
+                }
+            });
+        }
+
+        //#endregion
+
+        //#region call filter for category
+        var categoryFilter = $("#filter_1").text().toLowerCase();
+        if (categoryFilter == 'screen') {
+            $("#laptop").hide();
+            $("#screen").show();
+            $("#harddrive").hide();
+            $("#ram").hide();
+        } else {
+            if (categoryFilter == 'hard drive') {
+                $("#laptop").hide();
+                $("#screen").hide();
+                $("#harddrive").show();
+                $("#ram").hide();
+            } else {
+                if (categoryFilter == 'ram') {
+                    $("#laptop").hide();
+                    $("#screen").hide();
+                    $("#harddrive").hide();
+                    $("#ram").show();
+                } else {
+                    $("#laptop").show();
+                    $("#screen").hide();
+                    $("#harddrive").hide();
+                    $("#ram").hide();
+                }
+            }
+        }
+                            //#endregion
+
+    </script>
+}

@@ -1,0 +1,36 @@
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.deps.json
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\bin\Debug\net5.0\ref\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csprojAssemblyReference.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\ref\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.pdb
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.deps.json
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\bin\Debug\net5.0\ref\Core.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.pdb
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csprojAssemblyReference.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfoInputs.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfo.cs
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csproj.CoreCompileInputs.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\ref\Core.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.deps.json
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\bin\Debug\net5.0\ref\Core.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\bin\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\ref\Core.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Core\obj\Debug\net5.0\Core.csproj.AssemblyReference.cache

@@ -1,0 +1,17 @@
+|=================================================================================|
+|	----------------- Yêu cầu ghi chú the bố cục như sau -----------------    |
+| 	- [ngày / tháng] - [Người chỉnh sửa] : [Nội dung chỉnh sửa]	  |
+|										  |
+|=================================================================================|
+
+- 24/04 - Vinh		: 	Đã hoàn thành hiển thị sản phẩm + chi tiết sản phẩm.
+- 01/05 - Vinh		: 	Đã hoàn thành hiển thị sản phẩm cho trang Product + phân trang
+- 02/05 - Trường	: 	Đã hoàn thành việc Login Account, seeddata đầy đủ, 
+				nhưng chưa làm được sau khi đăng nhập hiển thị tên tài khoản lên thanh _Header partial,
+				và chưa biết cách là khi đã đăng nhập vào rồi thì trên thanh Header phải có chữ đăng xuất.
+- 04/05 - Vinh		: 	Đã fix lỗi của Trường và hoàn thành chức năng thêm sp vào giỏ hàng + hiển thị giỏ hàng.
+- 06/05 - Vinh		: 	Đã hoàn thành chức năng Remove Product From Cart
+				Đã hoàn thành chức năng Update cart
+- 07/05 - Vinh		:	Đã hoàn thành chức năng Checkout
+- 15/05 - Vinh		: 	Đã hoàn thành bộ lọc cơ bản + nâng cao. Đã fix lỗi xem lịch sử đơn hàng.
+- 28/05 - Vinh		: 	Đã hoàn thành chức năng tìm kiếm.

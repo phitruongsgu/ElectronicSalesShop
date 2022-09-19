@@ -1,0 +1,52 @@
+﻿@model ModelView
+
+<div align="center" style="margin-top:30px" class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 style="text-align:center" class="text-black-50">CHI TIẾT ĐƠN HÀNG</h2>
+        </div>
+    </div>
+    <hr />
+    @if (Model.order != null)
+    {
+        <table align="center" class="table table-bordered text-center">
+            <thead class="bg-warning">
+                <tr>
+                    <td>ID Order</td>
+                    <td>Image Product</td>
+                    <td>Product Name</td>
+                    <td>Amount Order</td>
+                    <td>Into Money</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var i in Model.DetailOrders)
+                {
+
+                <tr>
+                    <td>@i.ID_Order</td>
+                    @foreach (var j in Model.Products)
+                    {
+                        @if (i.ID_Product == j.ID_Product)
+                        {
+                            <td><img width="100" height="100" src="~/images/Image_ElectronicSale/products/@j.ImagePath" alt="product images"></td>
+                            <td>@j.Name</td>
+                        }
+                    }
+                    <td>@i.AmountOrder</td>
+                    <td>@int.Parse(i.IntoMoney).ToString("#,##0").Replace(",", ".") VNĐ</td>
+                </tr>
+
+
+                }
+            </tbody>
+        </table>
+    }
+</div>
+@section History_Detail{
+    <script>
+
+        var body = $("html, body");
+        body.animate({ scrollTop: 310 });
+    </script>
+}

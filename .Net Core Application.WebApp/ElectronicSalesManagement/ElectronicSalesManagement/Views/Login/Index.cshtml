@@ -1,0 +1,81 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login & Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<style>
+    .text-center input,
+    .input {
+        border-radius: 10px;
+    }
+</style>
+<div class="htc__login__register bg__white ptb--130" style="background-image: url('/images/bg/5.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <ul class="login__register__menu">
+                    <li>
+                        <a data-toggle="tab" onclick="$('#register').removeClass('show')" class="active" href="#login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="htc__login__register__wrap">
+                    <div class="tab-content">
+                        <!-- Start Single Content -->
+                        <div id="login">
+                            <form asp-action="Index" asp-controller="Login" method="post" enctype="multipart/form-data">
+                                <div class="form-group row">
+                                    <label for="Username" class="col-sm-3 col-form-label font-weight-bold">@Html.DisplayNameFor(m => m.Username)</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control input" type="text" asp-for="Username" placeholder="User Name*">
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="Password" class="col-sm-3 col-form-label font-weight-bold">@Html.DisplayNameFor(m => m.Password)</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control input" type="password" asp-for="Password" placeholder="Password*">
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <input type="submit" id="submit" value="Login" class="btn btn-primary mb-2" />
+                                </div>
+                            </form>
+                            <div class="tabs__checkbox">
+                                <input type="checkbox">
+                                <span> Remember me</span>
+                                <span class="forget"><a href="#">Forget Pasword?</a></span>
+                            </div>
+                            <div class="htc__social__connect">
+                                <h2>Or Login With</h2>
+                                <ul class="htc__soaial__list">
+                                    <li><a class="bg--twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+
+                                    <li><a class="bg--instagram" href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+
+                                    <li><a class="bg--facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+
+                                    <li><a class="bg--googleplus" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                                    
+                                </ul>
+                                <br />
+                                <ul>If you don't have an account,<li><a class="btn btn-info" asp-controller="Login" asp-action="Register">Sign up now!</a></li></ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Login{ 
+<script>
+    var body = $("html, body");
+    body.animate({ scrollTop: 140 });
+</script>
+}

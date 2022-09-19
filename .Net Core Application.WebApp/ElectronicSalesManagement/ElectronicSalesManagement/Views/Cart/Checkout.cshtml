@@ -1,0 +1,311 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Checkout</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Checkout</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-8">
+                <div class="ckeckout-left-sidebar">
+                    <!-- Start Checkbox Area -->
+                    <div class="checkout-form">
+                        <h2 class="section-title-3">Billing details</h2>
+                        <div class="checkout-form-inner">
+                            <div class="single-checkout-box">
+                                <input id="txtFirstName" type="text" placeholder="First Name*" style="color:black;font-size:15px;">
+
+                                <input id="txtLastName" type="text" placeholder="Last Name*" style="color:black;font-size:15px;">
+                            </div>
+                            <div class="single-checkout-box">
+                                <input id="txtEmail" type="email" placeholder="Email*" style="color:black;font-size:15px;">
+                                <input id="txtPhone" type="text" placeholder="Phone*" style="color:black;font-size:15px;">
+                            </div>
+                            <div class="single-checkout-box">
+                                <select id="province"
+                                        style="width:220px;">
+                                    <option value="">Province*</option>
+                                    @foreach (var item in Model.Provinces)
+                                    {
+                                        <option value="@item.ID_Province">@item.Name</option>
+                                    }
+                                </select>
+
+                                <select id="district"
+                                        style="width:220px;">
+                                    <option value="">District*</option>
+                                </select>
+
+                                <select id="ward"
+                                        style="width:220px;">
+                                    <option value="">Ward*</option>
+                                </select>
+                            </div>
+
+                            <div class="single-checkout-box mt--20">
+                                <input id="txtAddress" type="text" placeholder="Address*" style="width:727px;color:black;font-size:15px;">
+                            </div>
+
+                            <div class="single-checkout-box">
+                                <textarea id="note" name="message" placeholder="Note" style="color:black;font-size:15px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-lg-4">
+                <div class="checkout-right-sidebar">
+                    <div class="our-important-note">
+                        <h2 class="section-title-2" style="color:black;">TERMS & CONDITIONS OF TVT GROUP :</h2>
+                        <p class="note-desc">
+                            Online launch program TVT Group for <br /> 1 order/customer.
+                        </p>
+                        <ul class="important-note" style="text-align: justify;">
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>No return or refund policies apply.</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>TVT Group reserves the right to refuse to serve any customer who does not comply with the instructions / regulations.</a></li>
+                            <li><a href="#"><i class="zmdi zmdi-caret-right-circle"></i>TVT Group reserves the right to amend these terms and conditions at any time without notice.</a></li>
+                        </ul>
+                        <div class="puick-contact-area mt--40 bg-white">
+                            <h2 style="color: black !important;font-weight: 600;">Check out</h2>
+                            <button onclick="return ValidateForCheckout();" class="btn btn-lg btn-danger mt--10">Proceed to Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="border:1px solid black;width:500px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" style="text-transform:uppercase;color:red;">Order Confirm</h5>
+            </div>
+
+            <div class="modal-body">
+                <h4>Please confirm your order.!!!</h4>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="Checkout();">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Checkout{
+    <script>
+        var body = $("html, body");
+        body.animate({ scrollTop: 732 });
+
+        //#region state change national
+
+        // change for select another item province
+        $("#province").change(function () {
+
+            var isSelected_IDProvince = $("#province option:selected").val();
+
+            if (isSelected_IDProvince != "") {
+                $.ajax({
+                    url: "/Cart/GetDistrict",
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "IDProvince": isSelected_IDProvince,
+                    }),
+                    cache: false,
+                    success: function (html) {
+                        $("#district").html('<option value="">District*</option>');
+                        $("#district").html(html);
+                        $("#ward").html('<option value="">Ward*</option>');
+                    },
+                    error: function () {
+                        alert("Get data districs failt.!!!");
+                    }
+                });
+            } else {
+                $("#district").html('<option value="">District*</option>');
+                $("#ward").html('<option value="">Ward*</option>');
+            }
+
+        });
+
+        // change for select another item district
+        $("#district").change(function () {
+
+            var isSelected_IDDistrict = $("#district option:selected").val();
+
+            if (isSelected_IDDistrict != "") {
+                $.ajax({
+                    url: "/Cart/GetWard",
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "IDDistrict": isSelected_IDDistrict,
+                    }),
+                    cache: false,
+                    success: function (html) {
+                        $("#ward").html('<option value="">Ward*</option>');
+                        $("#ward").html(html);
+                    },
+                    error: function () {
+                        alert("Get data ward failt.!!!");
+                    }
+                });
+            } else {
+                $("#ward").html('<option value="">Ward*</option>');
+            }
+
+        });
+        //#endregion
+
+        //#region Validate Form and Checkout
+        async function ValidateForCheckout() {
+
+            //#region get value
+            var FirstName = document.getElementById("txtFirstName").value;
+            var LastName = document.getElementById("txtLastName").value;
+
+            var Email = document.getElementById("txtEmail").value;
+            var emailExp = /^([a-zA-Z0-9_\.\-])+\@@(([a-zA-Z0-9\-])+\.)+([com\co\.\in])+$/; // to validate email
+
+            var Phone = document.getElementById("txtPhone").value;
+            var phoneExp = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+
+            var Address = document.getElementById("txtAddress").value;
+
+            var isSelected_IDProvince = $("#province option:selected").val();
+            var isSelected_IDDistrict = $("#district option:selected").val();
+            var isSelected_IDWard = $("#ward option:selected").val();
+
+            var Note = $("#note").val();
+            //#endregion
+
+            //#region check
+            if (FirstName == '' && LastName == '' && Email == '' && Phone == '' && Address == '') {
+                alert("Enter All Fields");
+                return false;
+            }
+            if (FirstName == '') {
+                alert("Please Enter FirstName");
+                return false;
+            }
+            if (LastName == '') {
+                alert("Please Enter LastName");
+                return false;
+            }
+            if (Email == '') {
+                alert("Please Enter Email");
+                return false;
+            }
+            if (Phone == '') {
+                alert("Please Enter Phone Number");
+                return false;
+            }
+            if (Address == '') {
+                alert("Please Enter Address");
+                return false;
+            }
+            if (isSelected_IDProvince == "") {
+                alert("Please Choose Your Province");
+                return false;
+            }
+            if (isSelected_IDDistrict == "") {
+                alert("Please Choose Your District");
+                return false;
+            }
+            if (isSelected_IDWard == "") {
+                alert("Please Choose Your Ward");
+                return false;
+            }
+            if (Email != '') {
+                if (!Email.match(emailExp)) {
+                    alert("Invalid email!");
+                    return false;
+                }
+            }
+            if (Phone != '') {
+                if (!Phone.match(phoneExp)) {
+                    alert("Invalid phone number!");
+                    return false;
+                }
+            }
+            //#endregion
+
+            $("#dialog1").modal("show");
+        }
+
+        function Checkout() {
+
+            //#region get value
+            var FirstName = document.getElementById("txtFirstName").value;
+            var LastName = document.getElementById("txtLastName").value;
+
+            var Email = document.getElementById("txtEmail").value;
+
+            var Phone = document.getElementById("txtPhone").value;
+
+            var Address = document.getElementById("txtAddress").value;
+
+            var isSelected_IDProvince = $("#province option:selected").val();
+            var isSelected_IDDistrict = $("#district option:selected").val();
+            var isSelected_IDWard = $("#ward option:selected").val();
+
+            var Note = $("#note").val();
+            //#endregion
+
+            $.ajax({
+                url: "/Cart/CheckoutHandler",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "FirstName": FirstName,
+                    "LastName": LastName,
+                    "Email": Email,
+                    "Phone": Phone,
+                    "IDProvince": isSelected_IDProvince,
+                    "IDDistrict": isSelected_IDDistrict,
+                    "IDWard": isSelected_IDWard,
+                    "Address": Address,
+                    "Note": Note
+                }),
+                cache: false,
+                success: function (message) {
+                    alert(message);
+                    window.location = "/Product/Index/0";
+                },
+                error: function () {
+                    alert("Checkout failt.!!!");
+                }
+            });
+        }
+            //#endregion
+    </script>
+}

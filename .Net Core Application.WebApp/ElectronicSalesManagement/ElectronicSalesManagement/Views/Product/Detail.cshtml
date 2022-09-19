@@ -1,0 +1,254 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    #region Array category
+    string[] laptop = { "Trade mark", "CPU", "Screen", "Ram", "Graphices", "Storage", "Operating System", "Battery" };
+    string[] pc = { "Trade mark", "CPU", "Ram", "Graphices", "Storage", "Operating System", "Wireless Connection", "Weight" };
+    string[] screen = { "Trade mark", "Size", "Resolution", "Style Screen", "Frequency Scan", "Background Plate", "Output Port", "Weight" };
+    string[] harddrive = { "Trade mark", "Capacity", "Connection", "Hard Drive Type", "Size", "Cache", "Operating System Support", "Rolation Speed" };
+    string[] ram = { "Size", "Generation", "Bus", "Cas" };
+
+    #endregion
+}
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url('/images/bg/2.jpg') no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Product Details</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="index.html">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Product Details</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="htc__product__details pt--110 pb--100 bg__white">
+    <div class="container" style="width:auto">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+                <div class="product__details__container">
+                    <div class="product__big__images">
+                        <div class="portfolio-full-image tab-content">
+                            <img style="margin-left:50px;" src="~/images/Image_ElectronicSale/products/@Model.product.ImagePath" alt="full-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 smt-30 xmt-30">
+                <div class="htc__product__details__inner">
+                    <div class="pro__detl__title">
+                        <h2>@Model.product.Name</h2>
+                    </div>
+                    <div class="pro__dtl__rating">
+                        <ul class="pro__rating">
+                            <li><span class="ti-star"></span></li>
+                            <li><span class="ti-star"></span></li>
+                            <li><span class="ti-star"></span></li>
+                            <li><span class="ti-star"></span></li>
+                            <li><span class="ti-star"></span></li>
+                        </ul>
+                        <span class="rat__qun">(Based on 0 Ratings)</span>
+                    </div>
+                    @{
+                        if (Model.product.ID_Sale == 0)
+                        {
+                            <ul class="pro__dtl__prize">
+                                <li>@int.Parse(Model.product.Price).ToString("#,##0").Replace(",", ".") VNĐ</li>
+                            </ul>
+                        }
+                        else
+                        {
+                            int percent = int.Parse(Model.sale.Percent_sale);
+                            <ul class="pro__dtl__prize">
+                                <li class="old__prize">@int.Parse(Model.product.Price).ToString("#,##0").Replace(",", ".")</li>
+                                <li>@(((int.Parse(Model.product.Price) - (int.Parse(Model.product.Price) * percent) / 100)).ToString("#,##0").Replace(",", ".")) VNĐ</li>
+                            </ul>
+                        }
+                    }
+
+                    <div class="product-action-wrap">
+                        <div class="prodict-statas"><span>Quantity :</span></div>
+                        <div class="product-quantity">
+                            <form id='myform' method='POST' action='#'>
+                                <div class="product-quantity">
+                                    <div class="cart-plus-minus">
+                                        <input class="cart-plus-minus-box font-weight-bold" type="text" name="qtybutton" id="qtybutton" value="1">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="product-action-wrap">
+                        @if (Model.product.Amount == 0)
+                        {
+                            <div>
+                                Remaining : <span id="amountProduct">0</span> product
+                                <span style="color:red;font-style:italic">(Temporarily out of stock)</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>Remaining :<span id="amountProduct"> @Model.product.Amount</span> product</div>
+                        }
+
+                    </div>
+                    <ul class="pro__dtl__btn">
+                        <li class="buy__now__btn"><a onclick="return AddToCart(@Model.product.ID_Product);">Add to card</a></li>
+                        <li><a href="#"><span class="ti-heart"></span></a></li>
+                    </ul>
+                    <div class="pro__social__share">
+                        <h2>Share :</h2>
+                        <ul class="pro__soaial__link">
+                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 smt-30 xmt-30" style="border-left:1px solid silver;">
+                <div class="pro__detl__title">
+                    <h2 class="text-center">Featured</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        @{ switch (Model.categoryName.ToLower().ToString())
+                            {
+                                case "ram":
+                                    foreach (String i in ram)
+                                    {
+                                        <p class="mt--20"><i class="fa fa-dot-circle"></i>&ensp;@i :</p>
+                                    }
+                                    break;
+                                case "laptop":
+                                    foreach (String i in laptop)
+                                    {
+                                        <p class="mt--20"><i class="fa fa-dot-circle"></i>&ensp;@i :</p>
+                                    }
+                                    break;
+                                case "pc":
+                                    foreach (String i in pc)
+                                    {
+                                        <p class="mt--20"><i class="fa fa-dot-circle"></i>&ensp;@i :</p>
+                                    }
+                                    break;
+                                case "screen":
+                                    foreach (String i in screen)
+                                    {
+                                        <p class="mt--20"><i class="fa fa-dot-circle"></i>&ensp;@i :</p>
+                                    }
+                                    break;
+                                case "hard drive":
+                                    foreach (String i in harddrive)
+                                    {
+                                        <p class="mt--20"><i class="fa fa-dot-circle"></i>&ensp;@i :</p>
+                                    }
+                                    break;
+
+                            }
+                        }
+                    </div>
+                    <div class="col-lg-6">
+                        @{
+                            string[] description = Model.product.Description.Split(";");
+                            foreach (String i in description)
+                            {
+                                <p class="mt--20">@i</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal_title" style="text-transform:uppercase;">
+                    <i class="fas fa-exclamation-triangle"></i>&ensp;Notifications from our system
+                </h5>
+            </div>
+
+            <div class="modal-body" id="modal_body">
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Detail{
+    <script>
+        var body = $("html, body");
+        body.animate({ scrollTop: 665 });
+
+        //#region AddToCart
+        function AddToCart(id) {
+
+            var amount = $("#qtybutton").val();
+
+            var amountCurrent = $("#amountProduct").html();
+
+            if (amountCurrent == "0") {
+                $("#modal_body").html("Temporarily out of stock.!!!");
+                $('#dialog1').modal('show');
+            } else {
+                if (parseInt(amount) <= 0) {
+                    $("#modal_body").html("Please enter quantity of products greater than 0.!!!");
+                    $('#dialog1').modal('show');
+                } else {
+                    if (parseInt(amount) > parseInt(amountCurrent)) {
+                        $("#modal_body").html("The quantity has exceeded the existing quantity of the product.!!!");
+                        $('#dialog1').modal('show');
+                    } else {
+                        $.ajax({
+                            url: "/Product/AddToCart",
+                            type: "post",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            data: JSON.stringify({
+                                "IDProduct": id,
+                                "Amount": amount
+                            }),
+                            cache: false,
+                            success: function (message) {
+                                $("#modal_title").html("");
+                                $("#modal_title").html('Notifications from our system');
+                                $("#modal_body").html(message);
+                                $('#dialog1').modal('show');
+                                location.reload();
+                            },
+                            error: function () {
+                                $("#modal_body").html('<i class="fas fa-exclamation-triangle"></i>&ensp;Add to cart failt.!!!');
+                                $('#dialog1').modal('show');
+                            }
+                        });
+                    }
+                }
+            }
+
+
+        }
+        //#endregion
+    </script>
+}
+

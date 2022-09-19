@@ -1,0 +1,64 @@
+﻿@model ModelView
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 style="text-align:center" class="text-black-50">DETAIL YOUR ACCOUNT</h1>
+        </div>
+    </div>
+    <hr />
+    @{
+        String username = Context.Session.GetString("login");
+        if (username != null)
+        {
+            username = JsonConvert.DeserializeObject<String>(username);
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date Active</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in Model.Accounts)
+                    {
+                    <tr>
+                        @if (i.Username == username)
+                        {
+                            <td>@i.Username</td>
+                            <td>@i.Password</td>
+                            <td>@i.Status</td>
+                            <td>@i.Email</td>
+                            <td>@i.DateActive</td>
+                            <td>
+                                <a class="btn btn-warning" asp-controller="Account" asp-action="Edit" asp-route-id="@i.ID_Account">Edit</a>
+                                <a onclick="return confirmRemove()" class="btn btn-danger" asp-controller="Account" asp-action="Delete" asp-route-id="@i.ID_Account">Delete</a>
+                            </td>
+                        }
+
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        }
+    }
+</div>
+<script>
+    function confirmRemove() {
+        var a = confirm("Do you really want to delete your own account?");
+        if (a) {
+            return true;
+        }
+        return false;
+    }
+</script>

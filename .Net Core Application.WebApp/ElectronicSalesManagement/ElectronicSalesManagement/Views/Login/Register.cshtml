@@ -1,0 +1,61 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<style>
+    .text-center input,
+    .input {
+        border-radius: 10px;
+    }
+</style>
+<div class="htc__login__register bg__white ptb--130" style="background-image: url('/images/bg/5.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <ul class="login__register__menu">
+                    <li>
+                        <a data-toggle="tab" onclick="$('#register').removeClass('show')" class="active" href="#register">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="htc__login__register__wrap">
+                    <div class="tab-content">
+                        <!-- Start Single Content -->
+                        <div id="register">
+                            <form asp-action="Register" asp-controller="Login" class="login" method="post">
+                                <input asp-for="Username" type="text" placeholder="Username*">
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                                <input asp-for="Email" type="email" placeholder="Email*">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                                <input asp-for="Password" type="password" placeholder="Password*">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                                <input asp-for="ConfirmPassword" type="password" placeholder="ConfirmPassword*">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                <div class="text-center mt-2">
+                                    <input type="submit" id="submit" class="btn btn-sm btn-primary mb-2" value="Register">
+                                </div>
+                            </form>
+                            <div class="tabs__checkbox">
+                                <input type="checkbox">
+                                <span> Remember me</span>
+                            </div>
+                            <div class="htc__social__connect">
+                                <h2>Or Login With</h2>
+                                <ul class="htc__soaial__list">
+                                    <li><a class="bg--twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                                    <li><a class="bg--instagram" href="#"><i class="zmdi zmdi-instagram"></i></a></li>
+                                    <li><a class="bg--facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                                    <li><a class="bg--googleplus" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

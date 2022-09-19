@@ -1,0 +1,263 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .goingtoshoping a {
+        background: black;
+        border: medium none;
+        box-shadow: none;
+        color: #fff;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 15px;
+        text-transform: uppercase;
+        transition: all 0.3s ease 0s;
+        white-space: nowrap;
+    }
+
+        .goingtoshoping a:hover {
+            background: #ff4136;
+            color: #fff !important;
+        }
+</style>
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bradcaump__inner text-center">
+                        <h2 class="bradcaump-title">Cart</h2>
+                        <nav class="bradcaump-inner">
+                            <a class="breadcrumb-item" href="/Home/Index">Home</a>
+                            <span class="brd-separetor">/</span>
+                            <span class="breadcrumb-item active">Cart</span>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    if (Model.list_cart.Count() == 0)
+    {
+        <div class="cart-main-area pt--50 bg__white">
+            <div class="container">
+                <h1 style="text-align:center;text-transform:uppercase;">Your shopping cart is empty</h1>
+                <div class="row">
+                    <div class="col-lg-5"></div>
+                    <div class="col-lg-3 goingtoshoping mtb--20">
+                        <a href="/Product/Index/0">Continue Shopping</a>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="cart-main-area ptb--120 bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="table-content table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Product Name</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-subtotal">Total</th>
+                                        <th class="product-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var count = 0;
+                                        double totalMoney = 0;   // field total money
+
+                                        foreach (var item in Model.list_cart)
+                                        {
+                                            totalMoney += double.Parse(item.IntoMoney);
+                                            count++;
+
+                                            int percentSale = int.Parse(Model.Sales.Where(s => int.Parse(s.ID_SaleParent) == item.ParrentSale).FirstOrDefault().Percent_sale);
+                                            double saleMoney = double.Parse(item.Price) - (double.Parse(item.Price) * double.Parse(percentSale.ToString()) / 100);
+
+                                            <tr>
+                                                <td class="product-thumbnail">
+                                                    <input type="text" id="itemIDProduct_@count" value="@item.Product_ID" hidden/>
+                                                    <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Product_ID">
+                                                        <img src="~/images/Image_ElectronicSale/products/@item.Image" alt="product img" />
+                                                    </a>
+                                                </td>
+                                                <td class="product-name">
+                                                    <a asp-controller="Product" asp-action="Detail" asp-route-id="@item.Product_ID">@item.Product_Name</a>
+                                                </td>
+                                                <td class="product-price">
+                                                    @if (percentSale == 0)
+                                                    {
+                                                        <span class="amount">@double.Parse(@item.Price).ToString("#,##0").Replace(",", ".")</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="amount">@saleMoney.ToString("#,##0").Replace(",", ".")</span>
+                                                        <strike><span class="amount" style="font-size:12px;">@double.Parse(@item.Price).ToString("#,##0").Replace(",", ".")</span></strike>
+                                                    }
+                                                </td>
+                                                <td class="product-quantity"><input type="number" value="@item.Amount" /></td>
+                                                <td class="product-subtotal">@double.Parse(@item.IntoMoney).ToString("#,##0").Replace(",", ".")</td>
+                                                <td class="product-remove"><a style="cursor:pointer" onclick="return confirmDelete(@item.Product_ID);">X</a></td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-sm-7 col-xs-12">
+                                <div class="buttons-cart">
+                                    <input type="submit" onclick="return UpdateCart(@count);" value="Update Cart" />
+                                    <a href="/Product/Index/0">Continue Shopping</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-5 col-xs-12">
+                                <div class="cart_totals">
+                                    <h2>Cart Totals</h2>
+                                    <table>
+                                        <tbody>
+                                            <br />
+                                            <tr class="order-total">
+                                                <th>Total:</th>
+                                                <td>
+                                                    <strong><span class="amount" style="font-size:25px">@totalMoney.ToString("#,##0").Replace(",", ".") VNĐ</span></strong>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="wc-proceed-to-checkout">
+                                        <a asp-controller="Cart" asp-action="Checkout">Proceed to Checkout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<div class="modal fade" id="dialog1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="border:1px solid black;width:500px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" style="text-transform:uppercase;color:red;">Confirm delete</h5>
+            </div>
+
+            <div class="modal-body">
+                <h4>Do you want remove this product from the shopping cart.???</h4>
+                <input type="text" id="idProduct" hidden />
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" onclick="return removeProductFromCart();">Yes</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="loader">
+    <span class="fas fa-spinner xoay icon"></span>
+</div>
+
+@section Cart{
+
+    <script>
+
+        //#region Loader
+        $(window).on('load', function (event) {
+            $('body').removeClass('preloading');
+            // $('.load').delay(1000).fadeOut('fast');
+            $('.loader').delay(1000).fadeOut('fast');
+        });
+        //#endregion
+
+        var body = $("html, body");
+        body.animate({ scrollTop: 460 });
+
+        function confirmDelete(id) {
+            $("#idProduct").val(id);
+            $("#dialog1").modal("show");
+        }
+
+        function removeProductFromCart() {
+            var idProduct = $("#idProduct").val();
+            if (idProduct == null || idProduct == "") {
+                alert("Can't remove this product.!!!")
+                return false;
+            } else {
+                $.ajax({
+                    url: "/Cart/removeProductFromCart",
+                    type: "post",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({
+                        "IDProduct": idProduct
+                    }),
+                    cache: false,
+                    success: function (message) {
+                        //alert(message);
+                        location.reload();
+                    },
+                    error: function () {
+                        alert("Remove product from cart failt");
+                    }
+                });
+            }
+        }
+
+        async function UpdateCart(total) {
+            var get_quantity = $('input[type=number]');
+            for (var i = 0; i < get_quantity.length; i++) {
+                var quantity = get_quantity[i].value;
+                var idProduct = $("#itemIDProduct_" + (i + 1)).val();
+                if (parseInt(quantity) > 0) {
+                    await $.ajax({
+                        url: "/Cart/UpdateCart",
+                        type: "post",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        data: JSON.stringify({
+                            "IDProduct": idProduct,
+                            "Quantity": quantity
+                        }),
+                        cache: false,
+                        success: function (message) {
+                            // do not action
+                        },
+                        error: function () {
+                            alert("Update cart failt with product " + i + " th");
+                        }
+                    });
+                }
+            }
+            location.reload();
+        }
+
+    </script>
+
+}

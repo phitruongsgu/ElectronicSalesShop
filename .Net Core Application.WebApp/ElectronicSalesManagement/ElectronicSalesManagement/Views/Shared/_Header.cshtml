@@ -1,0 +1,87 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+@{
+    var data = Context.Session.GetString("cart");
+
+    int coutCart = 0;
+    if (data == null)
+    {
+        coutCart = 0;
+    }
+    else
+    {
+        var data2 = Context.Session.GetString("cart");
+        List<Cart> dataCart = JsonConvert.DeserializeObject<List<Cart>>(data2);
+
+        coutCart = dataCart.Sum(x => x.Amount);
+
+    }
+}
+<header id="header" class="htc-header header--3 bg__white">
+
+    <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
+                    <div class="logo">
+                        <a asp-controller="Home" asp-action="Index">
+                            <img style="border-radius:3px" src="~/images/logo/logo.jpg" alt="logo">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-7 col-sm-6 col-xs-6">
+                    <nav class="mainmenu__nav hidden-xs hidden-sm">
+                        <ul class="main__menu">
+                            <li class="drop"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li class="drop">
+                                <a asp-controller="Product" asp-action="Index" asp-route-idCategory="0">Products</a>
+                            </li>
+                            <li class="drop">
+                                <a asp-controller="History" asp-action="Index">History</a>
+                            </li>
+                            <li class="drop">
+                                <a asp-controller="Contact" asp-action="Index">Contact Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="col-md-2 col-sm-4 col-xs-3 col-lg-5">
+                    <ul class="menu-extra">
+                        <li>
+                            <span id="totalMoneyHeader"
+                                  style="color:red;font-size:13px;font-weight:600;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"></span>&ensp;
+                            <a asp-controller="Cart" asp-action="Index">
+                                    <i class="fas fa-shopping-cart" style="font-size:25px;"></i>
+                                    <span style="   font-weight:600;font-size:13px;padding:1px 6.5px 1px 6.5px;
+                                                    position:relative;bottom:18px;right:14px;
+                                                    border:2px solid white;background-color:#FF0000;color:white;
+                                                    border-radius:50%">@coutCart</span>
+                            </a>
+                        </li>
+                        @{
+                            String username = Context.Session.GetString("login");
+                            if (username != null)
+                            {
+                                username = JsonConvert.DeserializeObject<String>(username);
+                                <li>
+                                    Hello: <a asp-controller="Account" asp-action="Detail">@username</a>
+                                    <a class="nav-link nav-icons text-white font-weight-bold text-center bg-gradient-blue"
+                                       style="border-radius:10px;font-size:18px;margin-left:5px;"
+                                       asp-controller="Login"
+                                       asp-action="Logout"><i class="fa fa-sign-out-alt" style="font-size:22px;"></i></a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a asp-controller="Login" asp-action="Index"><span class="fa fa-user" style="font-size:22px;"></span></a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="body__overlay"></div>

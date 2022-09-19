@@ -1,0 +1,54 @@
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\Project_3_ElectronicSalesManagement\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.pdb
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\Documents\Github Manager\ElectronicSales\.Net Core Application\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\bin\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
+D:\CodeC#\.NET CORE MVC\ElectronicSales\.Net Core Application.WebApp\ElectronicSalesManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
